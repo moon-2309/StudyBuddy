@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header class="main-header">
+
+        <div class="nav-container">
+
+            <a href="#dashboard" class="logo">
+                <span>Study<span class="logo-highlight">Buddy</span></span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#tasks" class="nav-link">My Tasks</a>
+                <a href="#planner" class="nav-link">Planner</a>
+                <a href="#focus" class="nav-link">Focus Room</a>
+                <a href="#progress" class="nav-link">Progress</a>
+            </nav>
+
+            <div class="nav-profile">
+                <div class="profile-avatar">S</div>
+                <span class="profile-name">Student</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                Menu
+            </button>
+
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <section id="dashboard" class="page-section">
+            <div class="welcome-section">
+
+                <div class="welcome-content">
+                    <span class="welcome-label">YOUR PERSONAL STUDY SPACE</span>
+                    <h1>Hello, Buddy!</h1>
+                    <p>
+                        Ready to make today productive?
+                        Every little step counts!
+                    </p>
+                    <a href="#tasks" class="primary-btn">Explore My Tasks</a>
+                </div>
+
+                <div class="welcome-illustration">
+                    <img src="assets/images/study-illustration.png" alt="Welcome">
+                </div>
+
+            </div>
+
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-subtitle">YOUR DAILY OVERVIEW</span>
+                    <h2>Today's Snapshot</h2>
+                </div>
+
+                <div class="current-date">
+                    <span id="currentDate">Loading date...</span>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card pink-card">
+                    <div class="stat-info">
+                        <p>Total Tasks</p>
+                        <h3 id="totalTasks">0</h3>
+                        <span>Tasks in your list</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card purple-card">
+                    <div class="stat-info">
+                        <p>Completed</p>
+                        <h3 id="completedTasks">0</h3>
+                        <span>Tasks finished</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card yellow-card">
+                    <div class="stat-info">
+                        <p>Pending</p>
+                        <h3 id="pendingTasks">0</h3>
+                        <span>Still on your list</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card green-card">
+                    <div class="stat-info">
+                        <p>Study Hours</p>
+                        <h3 id="studyHours">0h</h3>
+                        <span>Time spent studying</span>
+                    </div>
+                </article>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <article class="content-card upcoming-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="section-subtitle">STAY ON TRACK</span>
+                            <h3>Upcoming Tasks</h3>
+                        </div>
+                        <a href="#tasks" class="text-link">View All</a>
+                    </div>
+                    <div id="upcomingTasksList" class="upcoming-tasks-list">
+                        <div class="empty-state">
+                            <p>No upcoming tasks yet!</p>
+                            <span>Add a task to get started.</span>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="content-card daily-progress-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="section-subtitle">LITTLE STEPS MATTER</span>
+                            <h3>Daily Progress</h3>
+                        </div>
+                    </div>
+                    <div class="progress-circle" id="dailyProgressCircle">
+                        <div class="progress-circle-inner">
+                            <h2 id="dailyProgressPercentage">0%</h2>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <p class="progress-message" id="progressMessage">
+                        Your productivity journey starts here!
+                    </p>
+                </article>
+
+            </div>
+
+
+            <div class="quote-banner">
+                <div>
+                    <h3>A little progress every day adds up to big results.</h3>
+                    <p>Keep learning, keep growing!</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section id="tasks" class="page-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-subtitle">PLAN IT. DO IT. DONE!</span>
+                    <h2>My Tasks</h2>
+                    <p>Keep track of everything you need to accomplish.</p>
+                </div>
+                <button class="primary-btn" id="addTaskBtn">
+                    Add New Task
+                </button>
+            </div>
+
+
+            <div class="content-card task-controls">
+                <div class="search-box">
+                    <input
+                        type="text" id="taskSearch" placeholder="Search your tasks...">
+                </div>
+
+
+                <div class="filter-controls">
+                    <select id="taskFilter">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <h3>Your Task List</h3>
+                    <span id="taskCount">0 Tasks</span>
+                </div>
+                <div id="tasksList" class="tasks-list">
+                    <div class="empty-state">
+                        <h3>Your task list is empty!</h3>
+                        <p>Add your first task and get organised.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-overlay" id="taskModal">
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <div>
+                            <span class="section-subtitle">MAKE A PLAN</span>
+                            <h3 id="taskModalTitle">Add New Task</h3>
+                        </div>
+                        <button class="close-modal" id="closeTaskModal"> Close</button>
+                    </div>
+
+
+                    <form id="taskForm">
+
+                        <input type="hidden" id="taskId">
+                        <div class="form-group">
+                            <label for="taskTitle">Task Title</label>
+                            <input type="text" id="taskTitle" placeholder="Enter Task" required maxlength="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="taskDescription">Description</label>
+                            <textarea
+                                id="taskDescription" rows="3" placeholder="Add some details about your task..." maxlength="300" ></textarea>
+                        </div>
+
+
+                        <button type="submit" class="primary-btn form-submit-btn">Save Task</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="planner" class="page-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-subtitle">MAKE TIME FOR LEARNING</span>
+                    <h2>Study Planner</h2>
+                    <p>Plan your week and make every study session count.</p>
+                </div>
+
+                <button class="primary-btn" id="addSessionBtn">Add Session</button>
+
+            </div>
+
+
+            <div class="content-card planner-card">
+
+                <div class="card-heading">
+                    <div>
+                        <h3>Your Weekly Schedule</h3>
+                        <p>Organise your study sessions.</p>
+                    </div>
+
+                    <div class="week-navigation">
+                        <button id="previousWeek">Previous</button>
+                        <span id="weekDisplay">This Week</span>
+                        <button id="nextWeek">Next</button>
+                    </div>
+                </div>
+
+
+                <div class="planner-grid" id="plannerGrid">
+                </div>
+
+            </div>
+
+
+            <div class="modal-overlay" id="sessionModal">
+
+                <div class="modal-content">
+
+                    <div class="modal-heading">
+                        <div>
+                            <span class="section-subtitle">PLAN YOUR TIME</span>
+                            <h3>Add Study Session</h3>
+                        </div>
+                        <button class="close-modal" id="closeSessionModal">Close</button>
+                    </div>
+
+
+                    <form id="sessionForm">
+
+                        <div class="form-group">
+                            <label for="sessionTitle">Session Title</label>
+                            <input type="text" id="sessionTitle" placeholder="enter session title" required maxlength="80">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="sessionDate">Date</label>
+                            <input type="date" id="sessionDate" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="sessionTime">Start Time</label>
+                            <input type="time" id="sessionTime" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="sessionDuration">Duration (minutes)</label>
+                            <input type="number" id="sessionDuration" min="5" max="480" value="60" required>
+                        </div>
+
+
+                        <button type="submit" class="primary-btn form-submit-btn"> Save Session</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="focus" class="page-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-subtitle">FOCUS ON WHAT MATTERS</span>
+                    <h2>Focus Room</h2>
+                    <p>You can do it!</p>
+                </div>
+            </div>
+
+
+            <div class="focus-container">
+
+                <div class="focus-card">
+                    <span class="section-subtitle">YOUR FOCUS SESSION</span>
+                    <h3 id="timerMode">Time to Focus!</h3>
+
+                    <div class="timer-circle">
+                        <div class="timer-inner">
+                            <h1 id="timerDisplay">25:00</h1>
+                            <span id="timerStatus">Ready when you are</span>
+                        </div>
+                    </div>
+
+
+                    <div class="timer-modes">
+
+                        <button class="timer-mode active" data-mode="focus"> Focus </button>
+
+                        <button class="timer-mode" data-mode="break">Short Break </button>
+                    </div>
+
+
+                    <div class="timer-controls">
+
+                        <button class="primary-btn" id="startTimer">Start</button>
+
+                        <button class="secondary-btn" id="resetTimer">Reset</button>
+
+                    </div>
+
+
+                    <div class="focus-session-info">
+                        <span>Sessions completed:</span>
+                        <strong id="completedSessions">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="focus-tips">
+
+                    <h3>A little focus goes a long way!</h3>
+
+                    <p>
+                        Put away distractions, grab some water
+                        and concentrate on one task at a time.
+                    </p>
+
+                    <span>Keep growing!</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="progress" class="page-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-subtitle">LOOK HOW FAR YOU'VE COME</span>
+                    <h2>My Progress</h2>
+                    <p>Celebrate your efforts and track your productivity.</p>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card pink-card">
+                    <div class="stat-info">
+                        <p>Tasks Completed</p>
+                        <h3 id="progressCompletedTasks">0</h3>
+                        <span>All-time completed tasks</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card purple-card">
+                    <div class="stat-info">
+                        <p>Focus Sessions</p>
+                        <h3 id="progressFocusSessions">0</h3>
+                        <span>Sessions completed</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card green-card">
+                    <div class="stat-info">
+                        <p>Study Hours</p>
+                        <h3 id="progressStudyHours">0h</h3>
+                        <span>Time spent studying</span>
+                    </div>
+                </article>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <article class="content-card">
+                    
+                    <div class="card-heading">
+                        <div>
+                            <span class="section-subtitle">YOUR ACHIEVEMENTS</span>
+                            <h3>Task Completion</h3>
+                        </div>
+                    </div>
+
+                    <div class="completion-chart" id="completionChart">
+                        <div class="empty-state">
+                            <p>Your progress will appear here.</p>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="content-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <span class="section-subtitle">YOUR STUDY HABITS</span>
+                            <h3>Study Statistics</h3>
+                        </div>
+                    </div>
+
+                    <div id="studyStatistics">
+                        <div class="empty-state">
+                            <p>Your study statistics will appear here.</p>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+     <footer class="main-footer">
+
+        <div class="footer-content">
+            <a href="#dashboard" class="logo footer-logo">
+                <p>Your Study Buddy!
+                   By Versha Kumari
+                </p>
+        </div>
+
+    </footer>
+
+</body>
+</html>
